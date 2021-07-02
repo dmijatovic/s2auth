@@ -1,33 +1,33 @@
-import express from 'express'
+import express from "express";
 
-import {signJwt} from './jwtSign.js'
+import { signJwt } from "./jwtSign.js";
 
-const app = express()
+const app = express();
 
-const PORT = 5000
+const PORT = 5000;
 
-app.get("/",async(req,res)=>{
+app.get("/", async (req, res) => {
   res.json({
-    message:"it works"
-  })
-})
+    message: "it works",
+  });
+});
 
-app.get('/token',(req,res)=>{
-  const user={
-    name:"Test name",
-    role:"admin",
-    scopes:"affiliate_link"
-  }
-  const token = signJwt(user)
+// sign token
+app.get("/token", (req, res) => {
+  const user = {
+    name: "Test name",
+    role: "admin",
+    scopes: "affiliate_link",
+  };
+  const token = signJwt(user);
 
   res.json({
-    token
-  })
+    token,
+  });
+});
 
-})
+app.get("/validate", (req, res) => {});
 
-
-app.listen(PORT,()=>{
-  console.log(`server on port ${PORT}`)
-})
-
+app.listen(PORT, () => {
+  console.log(`server on port ${PORT}`);
+});

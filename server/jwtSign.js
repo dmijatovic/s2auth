@@ -1,24 +1,16 @@
-import fs from 'fs'
-import jwt from 'jsonwebtoken'
+import fs from "fs";
+import jwt from "jsonwebtoken";
 
-// signing variables
-const signOptions = {
-  // issuer
-  issuer: "AMG Click Server",
-  // subject
-  subject: "affiliate links",
-  // audience
-  audience: "raboom",
-  // expitation time
-  expiresIn: "1h",
-  // required algo to use
-  // with private/public keys
-  algorithm: "RS256"
-};
+import signOptions from "../signOptions.js";
 
-const privateKey = fs.readFileSync("./server/private.pem","utf-8")
+const privateKey = fs.readFileSync("./server/private.pem", "utf-8");
 
-export function signJwt(payload){
-  const token = jwt.sign(payload,privateKey,signOptions)
-  return token
+export function signJwt(payload) {
+  const token = jwt.sign(payload, privateKey, signOptions);
+  return token;
+}
+
+export function verifyJwt(token) {
+  const valid = jwt.verify(token, privateKey, signOptions);
+  return valid;
 }

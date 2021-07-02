@@ -1,0 +1,22 @@
+{
+  "name": "s2sauth",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "server": "node server/index.js",
+    "dev:server": "nodemon server",
+    "consumer": "node consumer/index.js",
+    "dev:consumer": "nodemon consumer"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
